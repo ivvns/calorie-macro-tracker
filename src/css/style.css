@@ -5,20 +5,49 @@
 
 .wrapper {
     margin: 0 auto;
-    @apply w-8/12;
-}
-
-.btn {
-    @apply bg-blue-600 py-2 px-4 rounded-full text-white hover:bg-yellow-300 hover:text-black transition ease-in text-sm mx-2;
+    @apply w-8/12 lg:max-w-screen-xl;
 }
 
 .stats-text {
     @apply font-semibold text-xs;
 }
 
+
+/* Button */
+
+.btn {
+    @apply bg-blue-600 py-2 px-4 rounded-full text-white hover:bg-yellow-300 hover:text-black transition ease-in text-sm mx-2;
+}
+
+.btn {
+    @apply lg:text-lg;
+}
+
+
+/* Limit */
+
+.limit-value {
+    @apply md:text-xl;
+
+}
+
 /* Progress */
 .progress-cards {
     @apply bg-black text-white p-2 w-2/4 text-xs rounded-xl text-center;
+}
+
+
+.progress-number {
+    @apply md:text-xl;
+}
+
+.progress-text {
+    @apply md:text-base lg:text-lg;
+}
+
+/* List of meals */
+.meal-macro {
+    @apply md:text-base;
 }
 
 
@@ -36,28 +65,29 @@
   
   .modal {
     @apply bg-gray-100 rounded-lg shadow-md shadow-gray-300 absolute overflow-hidden w-4/6 max-w-full;
-    top: 50%;
+    top: 30%;
     left: 50%;
     transform: translate(-50%, -50%);
     
   }
-  
+
   .modal-form div {
     @apply p-2;
   }
 
   .modal-form input, input::placeholder {
     @apply text-xs;
+    @apply md:text-base;
 }
   
   .modal-form label {
     @apply block mb-2 text-sm text-left;
-    
+    @apply lg:text-xl;
   }
   
   .modal-form .form-input {
     @apply w-full rounded-lg p-2;
-
+    @apply lg:text-lg;
   }
   
   .close-btn {

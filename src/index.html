@@ -17,7 +17,7 @@
       <header>
         <h1 class="text-3xl font-bold lowercase text-center pt-16 pb-6"><i class="fa-solid fa-weight-scale pr-2"></i>Cal</span>macro</h1>
         <div class="flex justify-center">
-          <button class="btn" id="open">Set limits</button>
+          <button class="btn open" id="open">Set limits</button>
           <button class="btn" id="reset">Reset limits</button>
         </div>
       </header>
@@ -27,24 +27,24 @@
         <div class="bg-yellow-300 rounded-3xl p-6 text-center">
           <!-- Calories Limit -->
           <div class="w-full">
-            <div id="calories-limit">2000</div>
-            <p class="font-bold">Calories</p>
+            <div id="calories-limit" class="text-2xl">2000</div>
+            <p class="font-semibold md:text-xl">Calories</p>
           </div>
-          <div class="flex pt-4">
+          <div class="flex pt-4 md:justify-center">
             <!-- Protein Limit -->
-            <div class="w-1/3">
-              <div id="protein-limit">135g</div>
-              <p class="stats-text">Protein</p>
+            <div class="w-1/3 md:w-40">
+              <div id="protein-limit" class="limit-value">135g</div>
+              <p class="stats-text md:text-base">Protein</p>
             </div>
             <!-- Carbs Limit -->
-            <div class="w-1/3">
-              <div id="carbs-limit">200g</div>
-              <p class="stats-text">Carbs</p>
+            <div class="w-1/3 md:w-40">
+              <div id="carbs-limit" class="limit-value">200g</div>
+              <p class="stats-text md:text-base">Carbs</p>
             </div>
             <!-- Fat Limit -->
-            <div class="w-1/3">
-              <div id="fat-limit">80g</div>
-              <p class="stats-text">Fats</p>
+            <div class="w-1/3  md:w-40">
+              <div id="fat-limit" class="limit-value">80g</div>
+              <p class="stats-text md:text-base">Fats</p>
             </div>
         </div>
       </section>
@@ -53,22 +53,22 @@
       <section class="my-10">
         <div class="flex justify-evenly mb-2">
           <div class="progress-cards mr-1">
-            <div id="calories-progress">100g</div>
-            <p>Calories</p>
+            <div id="calories-progress" class="progress-number">100g</div>
+            <p class="progress-text">Calories</p>
           </div>
           <div class="progress-cards ml-1">
-            <div id="protein-progress">80g</div>
-            <p>Protein</p>
+            <div id="protein-progress" class="progress-number">80g</div>
+            <p class="progress-text">Protein</p>
           </div>
         </div>
         <div class="flex justify-evenly">
           <div class="progress-cards mr-1">
-            <div id="carbs-progress">100g</div>
-            <p>Carbs</p>
+            <div id="carbs-progress" class="progress-number">100g</div>
+            <p class="progress-text">Carbs</p>
           </div>
           <div class="progress-cards ml-1">
-            <div id="fats-progress">200g</div>
-            <p>Fats</p>
+            <div id="fats-progress" class="progress-number">200g</div>
+            <p class="progress-text">Fats</p>
           </div>
         </div>
       </section>
@@ -76,81 +76,48 @@
       <!-- Show list of meals-->
       <section class="my-10">
         <div class="flex flex-row justify-between">
-          <h3 class="font-medium text-lg">Meals</h3>
-          <button id="" class="bg-yellow-300 p-2 text-xs rounded-lg">Add meal <i class="fa-solid fa-plus"></i></button>
+          <h3 class="font-medium text-lg md:text-2xl">Meals</h3>
+          <button id="" class="bg-yellow-300 p-2 text-xs rounded-lg md:text-sm">Add meal <i class="fa-solid fa-plus"></i></button>
         </div>
         <div class="bg-blue-600 text-white rounded-lg p-4 my-4">
           <div>
             <div class="flex justify-between">
-              <p class="pr-6 font-semibold">Potato</p>
+              <p class="pr-6 font-semibold md:text-xl">Potato</p>
               <button><i class="fa-solid fa-x"></i></button>
             </div>
             <div>
-              <p class="pb-2 font-light">1000 cals</p>
+              <p class="pb-2 font-light md:text-lg">1000 cals</p>
             </div>
             <div>
-              <ul class="flex text-xs font-light justify-between">
-                <li>protein</li>
-                <li>carbs</li>
-                <li>fats</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="bg-blue-600 text-white rounded-lg p-4 my-4">
-          <div>
-            <div class="flex justify-between">
-              <p class="pr-6 font-semibold">Potato</p>
-              <button><i class="fa-solid fa-x"></i></button>
-            </div>
-            <div>
-              <p class="pb-2 font-light">1000 cals</p>
-            </div>
-            <div>
-              <ul class="flex text-xs font-light justify-between">
-                <li>protein</li>
-                <li>carbs</li>
-                <li>fats</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="bg-blue-600 text-white rounded-lg p-4 my-4">
-          <div>
-            <div class="flex justify-between">
-              <p class="pr-6 font-semibold">Potato</p>
-              <button><i class="fa-solid fa-x"></i></button>
-            </div>
-            <div>
-              <p class="pb-2 font-light">1000 cals</p>
-            </div>
-            <div>
-              <ul class="flex text-xs font-light justify-between">
-                <li>protein</li>
-                <li>carbs</li>
-                <li>fats</li>
+              <ul class="flex text-xs font-light justify-between md:justify-normal">
+                <li class="meal-macro">protein</li>
+                <li class="md:px-16 meal-macro">carbs</li>
+                <li class="meal-macro">fats</li>
               </ul>
             </div>
           </div>
         </div>
       </section>
 
+      <footer>
+        <p class="text-center text-xs md:text-base">&copy; Ivan Somera 2023</p>
+      </footer>
 
       <!-- Set Limit Modal -->
       <div class="modal-container" id="modal">
-        <div class="modal">
-          <button class="close-btn" id="close">
+        <div class="modal md:max-w-screen-md">
+          <button class="close-btn close" id="close">
             <i class="fa fa-times"></i>
           </button>
           <div class="py-4">
-            <h3 class="font-semibold text-center">Set your limits</h3>
+            <h3 class="font-semibold text-center lg:text-2xl">Set your limits</h3>
           </div>
             <!-- Modal Macros -->  
             <form class="modal-form">
-              <div class="flex">
+              <div class="flex md:justify-center">
                 <!-- Calories -->  
                 <div>
-                  <label for="calories">Calories</label>
+                  <label for="calories" class="limit-label">Calories</label>
                   <input
                     type="number"
                     id="calories"
@@ -169,34 +136,32 @@
                   />
                 </div>
               </div>
-                <!-- Carbs --> 
-                <div class="flex">
-                  <div>
-                    <label for="carbs">Carbs</label>
-                    <input
-                      type="number"
-                      id="carbs"
-                      placeholder="200g"
-                      class="form-input"
-                    />
-                  </div>
-                  <!-- Fats -->  
-                  <div>
-                    <label for="fats">Fats</label>
-                    <input
-                      type="number"
-                      id="fats"
-                      placeholder="100g"
-                      class="form-input"
-                    />
-                  </div>
+              <!-- Carbs --> 
+              <div class="flex md:justify-center">
+                <div>
+                  <label for="carbs">Carbs</label>
+                  <input
+                    type="number"
+                    id="carbs"
+                    placeholder="200g"
+                    class="form-input"
+                  />
                 </div>
-                <div class="flex justify-end mr-2 mb-2">
-                  <input class="bg-yellow-300 p-2 rounded-lg text-xs" type="submit" value="Submit" class="submit-btn" />
+                <!-- Fats -->  
+                <div>
+                  <label for="fats">Fats</label>
+                  <input
+                    type="number"
+                    id="fats"
+                    placeholder="100g"
+                    class="form-input"
+                  />
                 </div>
-              </div>  
+              </div>
+              <div class="flex justify-end mr-2 mb-2 md:mr-0 md:justify-center">
+                <input class="bg-yellow-300 p-2 rounded-lg text-base" type="submit" value="Submit" class="submit-btn" />
+              </div>
             </form>
-          </div>
         </div>
       </div>
 
