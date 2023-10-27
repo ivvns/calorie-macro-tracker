@@ -11,5 +11,105 @@
     <title>Calmacro | Track your calories and macros</title>
   </head>
   <body>
+
+    <div class="wrapper">
+
+      <header>
+        <h1 class="text-3xl font-bold lowercase text-center pt-16 pb-6"><i class="fa-solid fa-weight-scale pr-2"></i>Cal</span>macro</h1>
+        <div class="flex justify-center">
+          <button class="btn" id="open">Set limits</button>
+          <button class="btn" id="reset">Reset limits</button>
+        </div>
+      </header>
+
+      <!-- Stats -->
+      <div class="bg-yellow-200 rounded-3xl p-6 my-10 text-center">
+         <!-- Calories Limit -->
+        <div class="w-full">
+          <div id="calories-limit">2000</div>
+          <p class="font-bold">Calories</p>
+        </div>
+        <div class="flex pt-4">
+          <!-- Protein Limit -->
+           <div class="w-1/3">
+             <div id="protein-limit">135g</div>
+             <p class="stats-text">Protein</p>
+           </div>
+          <!-- Carbs Limit -->
+          <div class="w-1/3">
+             <div id="carbs-limit">200g</div>
+             <p class="stats-text">Carbs</p>
+          </div>
+          <!-- Fat Limit -->
+          <div class="w-1/3">
+             <div id="fat-limit">80g</div>
+             <p class="stats-text">Fats</p>
+          </div>
+        </div>
+        
+      <!-- Modal -->
+      <div class="modal-container" id="modal">
+        <div class="modal">
+          <button class="close-btn" id="close">
+            <i class="fa fa-times"></i>
+          </button>
+          <div class="py-4">
+            <h3 class="font-semibold">Set your limits</h3>
+          </div>
+            <!-- Modal Macros -->  
+            <form class="modal-form">
+              <div class="flex">
+                <!-- Calories -->  
+                <div>
+                  <label for="calories">Calories</label>
+                  <input
+                    type="number"
+                    id="calories"
+                    placeholder="Calories"
+                    class="form-input"
+                  />
+                </div>
+                <!-- Protein -->  
+                <div>
+                  <label for="protein">Protein</label>
+                  <input
+                    type="number"
+                    id="protein"
+                    placeholder="Protein"
+                    class="form-input"
+                  />
+                </div>
+              </div>
+                <!-- Carbs --> 
+                <div class="flex">
+                  <div>
+                    <label for="carbs">Carbs</label>
+                    <input
+                      type="number"
+                      id="carbs"
+                      placeholder="Carbs"
+                      class="form-input"
+                    />
+                  </div>
+                  <!-- Fats -->  
+                  <div>
+                    <label for="fats">Fats</label>
+                    <input
+                      type="number"
+                      id="fats"
+                      placeholder="Enter fats goal"
+                      class="form-input"
+                    />
+                  </div>
+                </div>
+                <div class="flex justify-end mr-2 mb-2">
+                  <input class="bg-yellow-300 p-2 rounded-lg text-xs" type="submit" value="Submit" class="submit-btn" />
+                </div>
+              </div>  
+            </form>
+          </div>
+        </div>
+      </div>
+
   </body>
 </html>
