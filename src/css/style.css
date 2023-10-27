@@ -16,6 +16,12 @@
     @apply font-semibold text-xs;
 }
 
+/* Progress */
+.progress-cards {
+    @apply bg-black text-white p-2 w-2/4 text-xs rounded-xl text-center;
+}
+
+
 /* Modal  */
 
 .modal-container {
