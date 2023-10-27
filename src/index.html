@@ -17,7 +17,7 @@
       <header>
         <h1 class="text-3xl font-bold lowercase text-center pt-16 pb-6"><i class="fa-solid fa-weight-scale pr-2"></i>Cal</span>macro</h1>
         <div class="flex justify-center">
-          <button class="btn open" id="open">Set limits</button>
+          <button class="btn" id="open-limit">Set limits</button>
           <button class="btn" id="reset">Reset limits</button>
         </div>
       </header>
@@ -77,7 +77,7 @@
       <section class="my-10">
         <div class="flex flex-row justify-between">
           <h3 class="font-medium text-lg md:text-2xl">Meals</h3>
-          <button id="" class="bg-yellow-300 p-2 text-xs rounded-lg md:text-sm">Add meal <i class="fa-solid fa-plus"></i></button>
+          <button id="open-meal" class="bg-yellow-300 p-2 text-xs rounded-lg md:text-sm">Add meal <i class="fa-solid fa-plus"></i></button>
         </div>
         <div class="bg-blue-600 text-white rounded-lg p-4 my-4">
           <div>
@@ -104,9 +104,9 @@
       </footer>
 
       <!-- Set Limit Modal -->
-      <div class="modal-container" id="modal">
+      <div class="modal-container" id="modal-limit">
         <div class="modal md:max-w-screen-md">
-          <button class="close-btn close" id="close">
+          <button class="close-btn" id="close-limit">
             <i class="fa fa-times"></i>
           </button>
           <div class="py-4">
@@ -115,6 +115,77 @@
             <!-- Modal Macros -->  
             <form class="modal-form">
               <div class="flex md:justify-center">
+                <!-- Calories -->  
+                <div>
+                  <label for="calories" class="limit-label">Calories</label>
+                  <input
+                    type="number"
+                    id="calories"
+                    placeholder="2000"
+                    class="form-input"
+                  />
+                </div>
+                <!-- Protein -->  
+                <div>
+                  <label for="protein">Protein</label>
+                  <input
+                    type="number"
+                    id="protein"
+                    placeholder="100g"
+                    class="form-input"
+                  />
+                </div>
+              </div>
+              <!-- Carbs --> 
+              <div class="flex md:justify-center">
+                <div>
+                  <label for="carbs">Carbs</label>
+                  <input
+                    type="number"
+                    id="carbs"
+                    placeholder="200g"
+                    class="form-input"
+                  />
+                </div>
+                <!-- Fats -->  
+                <div>
+                  <label for="fats">Fats</label>
+                  <input
+                    type="number"
+                    id="fats"
+                    placeholder="100g"
+                    class="form-input"
+                  />
+                </div>
+              </div>
+              <div class="flex justify-end mr-2 mb-2 md:mr-0 md:justify-center">
+                <input class="bg-yellow-300 p-2 rounded-lg text-base" type="submit" value="Submit" class="submit-btn" />
+              </div>
+            </form>
+        </div>
+      </div>
+      <!-- Add Meal Modal -->
+      <div class="modal-container" id="modal-meal">
+        <div class="modal md:max-w-screen-md">
+          <button class="close-btn" id="close-meal">
+            <i class="fa fa-times"></i>
+          </button>
+          <div class="py-4">
+            <h3 class="font-semibold text-center lg:text-2xl">Add a meal</h3>
+          </div>
+            <!-- Modal Macros -->  
+            <form class="modal-form">
+              <div class="flex md:justify-center">
+                <!-- Calories -->  
+                <div>
+                  <label for="calories" class="limit-label">Name</label>
+                  <input
+                    type="number"
+                    id="calories"
+                    placeholder="Potato"
+                    class="form-input"
+                  />
+                </div>
                 <!-- Calories -->  
                 <div>
                   <label for="calories" class="limit-label">Calories</label>
