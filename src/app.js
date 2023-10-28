@@ -36,7 +36,7 @@ class MacroTracker {
     this._totalCarbs = Storage.getTotalCarbs(0);
     this._fatsLimit = Storage.getFatsLimit();
     this._totalFats = Storage.getTotalFats(0);
-    this._meals = [];
+    this._meals = Storage.getMeals();
 
     this._displayCaloriesLimit();
     this._displayProteinLimit();
@@ -71,6 +71,7 @@ class MacroTracker {
     Storage.updateTotalCarbs(this._totalCarbs);
     this._totalFats += meal.fats;  
     Storage.updateTotalFats(this._totalFats);
+    Storage.saveMeal(meal);
     this._displayNewMeal(meal);
     this._render();
   }
@@ -118,6 +119,10 @@ class MacroTracker {
     this._displayCarbsLimit();
     this._displayFatsLimit();
     this._render();
+  }
+
+  loadMeals() {
+    this._meals.forEach(meal => this._displayNewMeal(meal));
   }
 
   // Private Methods // 
@@ -470,6 +475,24 @@ class Storage {
     localStorage.setItem('totalFats', fats);
   }
 
+  // Get meals
+  static getMeals() {
+    let meals;
+    if(localStorage.getItem('meals') === null) {
+      meals = [];
+    } else {
+      meals = JSON.parse(localStorage.getItem('meals'));
+    }
+    return meals;       
+  }
+
+  // Save meal to local storage
+  static saveMeal(meal) {
+    const meals = Storage.getMeals();
+    meals.push(meal);
+    localStorage.setItem('meals', JSON.stringify(meals));
+  }
+
 }
 
 
@@ -477,7 +500,12 @@ class Storage {
 class App {
   constructor() {
     this._tracker = new MacroTracker();
+    this._loadEventListeners();
+    this._tracker.loadMeals();
 
+  }
+
+  _loadEventListeners() {
     document.getElementById('meal-form').addEventListener('submit', this._newMeal.bind(this));
 
     document.getElementById('meal-items').addEventListener('click', this._removeItem.bind(this, 'meal'));
@@ -485,8 +513,6 @@ class App {
     document.getElementById('reset').addEventListener('click', this._reset.bind(this));
 
     document.getElementById('limit-form').addEventListener('submit', this._setLimit.bind(this));
-
-
   }
 
   _newMeal(e) {
