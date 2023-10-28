@@ -57,6 +57,11 @@ class MacroTracker {
     this._displayFatsProgress();
     this._displayProteinProgress();
     this._displayCarbsProgress();
+
+    document.getElementById('modal-calories').value = this._calorieLimit;
+    document.getElementById('modal-protein').value = this._proteinLimit;
+    document.getElementById('modal-carbs').value = this._carbsLimit;
+    document.getElementById('modal-fats').value = this._fatsLimit;
   }
 
   // Public Methods
@@ -102,6 +107,7 @@ class MacroTracker {
     this._totalProtein = 0;
     this._totalCarbs = 0;
     this._totalFats = 0; 
+    Storage.clearAll();
     this._render();
   }
 
@@ -503,6 +509,14 @@ class Storage {
     });
 
     localStorage.setItem('meals', JSON.stringify(meals));
+  }
+
+  static clearAll() {
+    localStorage.removeItem('totalCalories');
+    localStorage.removeItem('totalProtein');
+    localStorage.removeItem('totalCarbs');
+    localStorage.removeItem('totalFats');
+    localStorage.removeItem('meals');
   }
 
 }
