@@ -90,6 +90,7 @@ class MacroTracker {
       this._totalFats -= meal.fats;  
       Storage.updateTotalFats(this._totalFats);
       this._meals.splice(index, 1);
+      Storage.removeMeal(id);
       this._render();
     }
   }
@@ -490,6 +491,17 @@ class Storage {
   static saveMeal(meal) {
     const meals = Storage.getMeals();
     meals.push(meal);
+    localStorage.setItem('meals', JSON.stringify(meals));
+  }
+
+  static removeMeal(id) {
+    const meals = Storage.getMeals();
+    meals.forEach((meal, index) => {
+      if(meal.id === id) {
+        meals.splice(index, 1);
+      }
+    });
+
     localStorage.setItem('meals', JSON.stringify(meals));
   }
 
