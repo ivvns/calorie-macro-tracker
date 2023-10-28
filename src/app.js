@@ -17,11 +17,6 @@ openLimit.addEventListener('click', () => modalLimit.classList.add('show-modal')
 // Hide modal
 closeLimit.addEventListener('click', () => modalLimit.classList.remove('show-modal'));
 
-// Hide modal on outside click
-window.addEventListener('click', e =>
-  e.target == modalLimit ? modalLimit.classList.remove('show-modal') : false
-);
-
 // Meal Modal //
 
 // Show modal
@@ -30,22 +25,17 @@ openMeal.addEventListener('click', () => modalMeal.classList.add('show-modal'));
 // Hide modal
 closeMeal.addEventListener('click', () => modalMeal.classList.remove('show-modal'));
 
-// Hide modal on outside click
-window.addEventListener('click', e =>
-  e.target == modalMeal ? modalMeal.classList.remove('show-modal') : false
-);
-
 // Macro Tracker
 class MacroTracker {
   constructor() {
     this._calorieLimit = Storage.getCalorieLimit();
-    this._totalCalories = 0;
+    this._totalCalories = Storage.getTotalCalories(0);
     this._proteinLimit = Storage.getProteinLimit();
-    this._totalProtein = 0;
+    this._totalProtein = Storage.getTotalProtein(0);
     this._carbsLimit = Storage.getCarbsLimit();
-    this._totalCarbs = 0;
+    this._totalCarbs = Storage.getTotalCarbs(0);
     this._fatsLimit = Storage.getFatsLimit();
-    this._totalFats = 0;
+    this._totalFats = Storage.getTotalFats(0);
     this._meals = [];
 
     this._displayCaloriesLimit();
@@ -74,9 +64,13 @@ class MacroTracker {
   addMeal(meal) {
     this._meals.push(meal);
     this._totalCalories += meal.calories;
+    Storage.updateTotalCalories(this._totalCalories);
     this._totalProtein += meal.protein;
+    Storage.updateTotalProtein(this._totalProtein);
     this._totalCarbs += meal.carbs;
+    Storage.updateTotalCarbs(this._totalCarbs);
     this._totalFats += meal.fats;  
+    Storage.updateTotalFats(this._totalFats);
     this._displayNewMeal(meal);
     this._render();
   }
@@ -87,9 +81,13 @@ class MacroTracker {
     if (index !== -1) {
       const meal = this._meals[index];
       this._totalCalories -= meal.calories;
+      Storage.updateTotalCalories(this._totalCalories);
       this._totalProtein -= meal.protein;
+      Storage.updateTotalProtein(this._totalProtein);
       this._totalCarbs -= meal.carbs;
+      Storage.updateTotalCarbs(this._totalCarbs);
       this._totalFats -= meal.fats;  
+      Storage.updateTotalFats(this._totalFats);
       this._meals.splice(index, 1);
       this._render();
     }
@@ -369,7 +367,7 @@ class Storage {
   }
 
   // Protein
-  static getProteinLimit(defaultLimit = '2000') {
+  static getProteinLimit(defaultLimit = '135') {
     let proteinLimit;
     if(localStorage.getItem('proteinLimit') === null) {
       proteinLimit = defaultLimit;
@@ -384,7 +382,7 @@ class Storage {
   }
   
   // Carbs
-  static getCarbsLimit(defaultLimit = '2000') {
+  static getCarbsLimit(defaultLimit = '230') {
     let carbsLimit;
     if(localStorage.getItem('carbsLimit') === null) {
       carbsLimit = defaultLimit;
@@ -398,7 +396,7 @@ class Storage {
     localStorage.setItem('carbsLimit', carbsLimit);
   }
   // Fats
-  static getFatsLimit(defaultLimit = '2000') {
+  static getFatsLimit(defaultLimit = '100') {
     let fatsLimit;
     if(localStorage.getItem('fatsLimit') === null) {
       fatsLimit = defaultLimit;
@@ -410,6 +408,66 @@ class Storage {
 
   static setFatsLimit(fatsLimit) {
     localStorage.setItem('fatsLimit', fatsLimit);
+  }
+
+  // Total Calories  
+  static getTotalCalories(defaultCalories = 0) {
+    let totalCalories;
+    if(localStorage.getItem('totalCalories') === null) {
+      totalCalories = defaultCalories;
+    } else {
+      totalCalories = +localStorage.getItem('totalCalories');
+    }
+    return totalCalories;    
+  }
+
+  static updateTotalCalories(calories) {
+    localStorage.setItem('totalCalories', calories);
+  }
+
+  // Total Protein
+  static getTotalProtein(defaultCalories = 0) {
+    let totalProtein;
+    if(localStorage.getItem('totalProtein') === null) {
+      totalProtein = defaultCalories;
+    } else {
+      totalProtein = +localStorage.getItem('totalProtein');
+    }
+    return totalProtein;    
+  }
+
+  static updateTotalProtein(protein) {
+    localStorage.setItem('totalProtein', protein);
+  }
+  
+  // Total Carbs
+  static getTotalCarbs(defaultCalories = 0) {
+    let totalCarbs;
+    if(localStorage.getItem('totalCarbs') === null) {
+      totalCarbs = defaultCalories;
+    } else {
+      totalCarbs = +localStorage.getItem('totalCarbs');
+    }
+    return totalCarbs;    
+  }
+
+  static updateTotalCarbs(carbs) {
+    localStorage.setItem('totalCarbs', carbs);
+  }
+
+  // Total Fats
+  static getTotalFats(defaultCalories = 0) {
+    let totalFats;
+    if(localStorage.getItem('totalFats') === null) {
+      totalFats = defaultCalories;
+    } else {
+      totalFats = +localStorage.getItem('totalFats');
+    }
+    return totalFats;    
+  }
+
+  static updateTotalFats(fats) {
+    localStorage.setItem('totalFats', fats);
   }
 
 }
@@ -442,7 +500,7 @@ class App {
 
     // Validate inputs
     if (name.value === '' || calories.value === '' || protein.value === '' || carbs.value === '' || fats.value === '') {
-      alert('Please enter a value');
+      alert('Please fil in all fields');
       return;
     }
 
