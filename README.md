@@ -11,3 +11,12 @@ App utilizes CRUD functionality:
 -Add meals
 
 -Delete meals 
+
+
+To run the app:
+
+clone the repo or download zip
+
+run `npm install` to download the dependencies
+
+run `npm run build` to build dist folder
