@@ -8,10 +8,13 @@
     @apply w-8/12 lg:max-w-screen-xl;
 }
 
-.stats-text {
-    @apply font-semibold text-xs;
+.text-limit {
+  @apply bg-black rounded-xl text-white ;
 }
 
+.bar-limit {
+  @apply bg-red-700;
+}
 
 /* Button */
 
@@ -31,18 +34,21 @@
 
 }
 
-/* Progress */
-.progress-cards {
-    @apply bg-black text-white p-2 w-2/4 text-xs rounded-xl text-center;
+.stats-text {
+  @apply font-semibold text-sm;
 }
 
-
-.progress-number {
-    @apply md:text-xl;
+/* consumed */
+.consumed-cards {
+    @apply bg-black text-white p-2 w-2/4 text-xs rounded-lg text-center;
 }
 
-.progress-text {
-    @apply md:text-base lg:text-lg;
+.consumed-number {
+    @apply text-sm md:text-xl;
+}
+
+.consumed-text {
+    @apply text-xs md:text-base lg:text-lg;
 }
 
 /* List of meals */
@@ -50,6 +56,20 @@
     @apply md:text-base;
 }
 
+/* Remaining */
+
+.remaining-card {
+  @apply w-3/12 lg:w-2/12 xl:w-1/12 mr-2 p-2;
+}
+
+.remaining-value {
+  @apply text-sm md:text-base lg:text-lg;
+}
+
+.remaining-text {
+
+  @apply text-xs lowercase md:text-sm lg:text-base;
+}
 
 /* Modal  */
 
@@ -95,3 +115,6 @@
     top: 12px;
     right: 16px;
   }
+
+
+ 
