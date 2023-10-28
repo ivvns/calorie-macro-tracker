@@ -122,22 +122,6 @@
           <button id="open-meal" class="bg-yellow-300 p-2 text-xs rounded-lg md:text-sm">Add meal <i class="fa-solid fa-plus"></i></button>
         </div>
         <div id="meal-items" class="flex flex-wrap justify-between">
-          <!-- <div class="meal-card"> 
-            <div class="meal-heading">
-              <p class="meal-text">Potato</p>
-              <button class='delete'><i class="fa-solid fa-x"></i></button>
-            </div>
-            <div>
-              <p class="meal-cals">1000 cals</p>
-            </div>
-            <div>
-              <ul class="meal-nutrition">
-                <li class="meal-macro" id="">protein</li>
-                <li class="meal-macro meal-carbs" id="">carbs</li>
-                <li class="meal-macro" id="">fats</li>
-              </ul>
-            </div>
-          </div> -->
         </div>
       </section>
 
@@ -146,7 +130,7 @@
       </footer>
 
       <!-- Set Limit Modal -->
-      <div class="modal-container" id="modal-limit">
+      <div class="modal-container limit-modal" id="modal-limit">
         <div class="modal md:max-w-screen-md">
           <button class="close-btn" id="close-limit">
             <i class="fa fa-times"></i>
@@ -162,7 +146,7 @@
                   <label for="calories" class="limit-label">Calories</label>
                   <input
                     type="text"
-                    id="calories"
+                    id="modal-calories"
                     placeholder="2000"
                     class="form-input"
                   />
@@ -172,7 +156,7 @@
                   <label for="protein">Protein</label>
                   <input
                     type="number"
-                    id="protein"
+                    id="modal-protein"
                     placeholder="100g"
                     class="form-input"
                   />
@@ -184,7 +168,7 @@
                   <label for="carbs">Carbs</label>
                   <input
                     type="number"
-                    id="carbs"
+                    id="modal-carbs"
                     placeholder="200g"
                     class="form-input"
                   />
@@ -194,7 +178,7 @@
                   <label for="fats">Fats</label>
                   <input
                     type="number"
-                    id="fats"
+                    id="modal-fats"
                     placeholder="100g"
                     class="form-input"
                   />

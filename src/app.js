@@ -95,6 +95,29 @@ class MacroTracker {
     }
   }
 
+  reset() {
+    this._totalCalories = 0;
+    this._meals = [];
+    this._totalCalories = 0;
+    this._totalProtein = 0;
+    this._totalCarbs = 0;
+    this._totalFats = 0; 
+    this._render();
+  }
+
+  setLimit(calorieLimit, proteinLimit, carbsLimit, fatsLimit) {
+    this._calorieLimit = calorieLimit;
+    this._proteinLimit = proteinLimit;
+    this._carbsLimit = carbsLimit;
+    this._fatsLimit = fatsLimit;
+
+    this._displayCaloriesLimit();
+    this._displayProteinLimit();
+    this._displayCarbsLimit();
+    this._displayFatsLimit();
+    this._render();
+  }
+
   // Private Methods // 
 
   // Limits
@@ -332,6 +355,11 @@ class App {
 
     document.getElementById('meal-items').addEventListener('click', this._removeItem.bind(this, 'meal'));
 
+    document.getElementById('reset').addEventListener('click', this._reset.bind(this));
+
+    document.getElementById('limit-form').addEventListener('submit', this._setLimit.bind(this));
+
+
   }
 
   _newMeal(e) {
@@ -353,6 +381,11 @@ class App {
 
     this._tracker.addMeal(meal);
 
+    const mealModal = document.getElementById('modal-meal');
+
+    // Close Modal
+    mealModal.addEventListener('submit', () => modalMeal.classList.remove('show-modal'));
+
     name.value = '';
     calories.value = '';
     protein.value = '';
@@ -371,6 +404,37 @@ class App {
 
         e.target.closest('.meal-card').remove();
     }
+  }
+
+  _reset() {
+    this._tracker.reset();
+    document.getElementById('meal-items').innerHTML = '';
+  }
+
+  _setLimit(e) {
+    e.preventDefault();
+    const caloriesLimit = document.getElementById('modal-calories');
+    const proteinLimit = document.getElementById('modal-protein');
+    const carbsLimit = document.getElementById('modal-carbs');
+    const fatsLimit = document.getElementById('modal-fats');
+    
+    if(caloriesLimit.value === '' || proteinLimit.value === '' || carbsLimit.value === '' || fatsLimit.value === '') {
+      alert('Please add a limit');
+      return;
+    }
+
+    this._tracker.setLimit(+caloriesLimit.value, +proteinLimit.value, +carbsLimit.value, +fatsLimit.value);
+
+    caloriesLimit.value = '';
+    proteinLimit.value = '';
+    carbsLimit.value = '';
+    fatsLimit.value = '';
+    
+    // Close Modal
+    const limitModal = document.getElementById('modal-limit');
+    
+    limitModal.addEventListener('submit', () => modalLimit.classList.remove('show-modal'));
+
   }
 
 }
