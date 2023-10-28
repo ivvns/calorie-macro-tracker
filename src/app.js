@@ -38,13 +38,13 @@ window.addEventListener('click', e =>
 // Macro Tracker
 class MacroTracker {
   constructor() {
-    this._calorieLimit = 3000;
+    this._calorieLimit = Storage.getCalorieLimit();
     this._totalCalories = 0;
-    this._proteinLimit = 200;
+    this._proteinLimit = Storage.getProteinLimit();
     this._totalProtein = 0;
-    this._carbsLimit = 180;
+    this._carbsLimit = Storage.getCarbsLimit();
     this._totalCarbs = 0;
-    this._fatsLimit = 180;
+    this._fatsLimit = Storage.getFatsLimit();
     this._totalFats = 0;
     this._meals = [];
 
@@ -107,9 +107,13 @@ class MacroTracker {
 
   setLimit(calorieLimit, proteinLimit, carbsLimit, fatsLimit) {
     this._calorieLimit = calorieLimit;
+    Storage.setCalorieLimit(calorieLimit);
     this._proteinLimit = proteinLimit;
+    Storage.setProteinLimit(proteinLimit);
     this._carbsLimit = carbsLimit;
+    Storage.setCarbsLimit(carbsLimit);
     this._fatsLimit = fatsLimit;
+    Storage.setFatsLimit(fatsLimit);
 
     this._displayCaloriesLimit();
     this._displayProteinLimit();
@@ -346,6 +350,71 @@ class Meal {
   }
 }
 
+// Storage
+class Storage {
+
+  // Calorie 
+  static getCalorieLimit(defaultLimit = '2000') {
+    let calorieLimit;
+    if(localStorage.getItem('calorieLimit') === null) {
+      calorieLimit = defaultLimit;
+    } else {
+      calorieLimit = +localStorage.getItem('calorieLimit');
+    }
+    return calorieLimit;
+  }
+
+  static setCalorieLimit(calorieLimit) {
+    localStorage.setItem('calorieLimit', calorieLimit);
+  }
+
+  // Protein
+  static getProteinLimit(defaultLimit = '2000') {
+    let proteinLimit;
+    if(localStorage.getItem('proteinLimit') === null) {
+      proteinLimit = defaultLimit;
+    } else {
+      proteinLimit = +localStorage.getItem('proteinLimit');
+    }
+    return proteinLimit;
+  }
+
+  static setProteinLimit(proteinLimit) {
+    localStorage.setItem('proteinLimit', proteinLimit);
+  }
+  
+  // Carbs
+  static getCarbsLimit(defaultLimit = '2000') {
+    let carbsLimit;
+    if(localStorage.getItem('carbsLimit') === null) {
+      carbsLimit = defaultLimit;
+    } else {
+      carbsLimit = +localStorage.getItem('carbsLimit');
+    }
+    return carbsLimit;
+  }
+
+  static setCarbsLimit(carbsLimit) {
+    localStorage.setItem('carbsLimit', carbsLimit);
+  }
+  // Fats
+  static getFatsLimit(defaultLimit = '2000') {
+    let fatsLimit;
+    if(localStorage.getItem('fatsLimit') === null) {
+      fatsLimit = defaultLimit;
+    } else {
+      fatsLimit = +localStorage.getItem('fatsLimit');
+    }
+    return fatsLimit;
+  }
+
+  static setFatsLimit(fatsLimit) {
+    localStorage.setItem('fatsLimit', fatsLimit);
+  }
+
+}
+
+
 // App 
 class App {
   constructor() {
@@ -419,7 +488,7 @@ class App {
     const fatsLimit = document.getElementById('modal-fats');
     
     if(caloriesLimit.value === '' || proteinLimit.value === '' || carbsLimit.value === '' || fatsLimit.value === '') {
-      alert('Please add a limit');
+      alert('Please fill in all values');
       return;
     }
 
