@@ -121,23 +121,23 @@
           <h3 class="font-medium text-lg md:text-2xl">Meals</h3>
           <button id="open-meal" class="bg-yellow-300 p-2 text-xs rounded-lg md:text-sm">Add meal <i class="fa-solid fa-plus"></i></button>
         </div>
-        <div class="bg-blue-600 text-white rounded-lg p-4 my-4">
-          <div>
-            <div class="flex justify-between">
-              <p class="pr-6 font-semibold md:text-xl">Potato</p>
-              <button><i class="fa-solid fa-x"></i></button>
+        <div id="meal-items" class="flex flex-wrap justify-between">
+          <!-- <div class="meal-card"> 
+            <div class="meal-heading">
+              <p class="meal-text">Potato</p>
+              <button class='delete'><i class="fa-solid fa-x"></i></button>
             </div>
             <div>
-              <p class="pb-2 font-light md:text-lg">1000 cals</p>
+              <p class="meal-cals">1000 cals</p>
             </div>
             <div>
-              <ul class="flex text-xs font-light justify-between md:justify-normal">
+              <ul class="meal-nutrition">
                 <li class="meal-macro" id="">protein</li>
-                <li class="md:px-16 meal-macro" id="">carbs</li>
+                <li class="meal-macro meal-carbs" id="">carbs</li>
                 <li class="meal-macro" id="">fats</li>
               </ul>
             </div>
-          </div>
+          </div> -->
         </div>
       </section>
 
@@ -155,13 +155,13 @@
             <h3 class="font-semibold text-center lg:text-2xl">Set your limits</h3>
           </div>
             <!-- Modal Macros -->  
-            <form class="modal-form">
+            <form id="limit-form" class="modal-form">
               <div class="flex md:justify-center">
                 <!-- Calories -->  
                 <div>
                   <label for="calories" class="limit-label">Calories</label>
                   <input
-                    type="number"
+                    type="text"
                     id="calories"
                     placeholder="2000"
                     class="form-input"
@@ -216,14 +216,14 @@
             <h3 class="font-semibold text-center lg:text-2xl">Add a meal</h3>
           </div>
             <!-- Modal Macros -->  
-            <form class="modal-form">
+            <form id="meal-form" class="modal-form">
               <div class="flex md:justify-center">
                 <!-- Calories -->  
                 <div>
                   <label for="calories" class="limit-label">Name</label>
                   <input
-                    type="number"
-                    id="calories"
+                    type="text"
+                    id="meal-name"
                     placeholder="Potato"
                     class="form-input"
                   />
@@ -233,7 +233,7 @@
                   <label for="calories" class="limit-label">Calories</label>
                   <input
                     type="number"
-                    id="calories"
+                    id="meal-calories"
                     placeholder="2000"
                     class="form-input"
                   />
@@ -243,7 +243,7 @@
                   <label for="protein">Protein</label>
                   <input
                     type="number"
-                    id="protein"
+                    id="meal-protein"
                     placeholder="100g"
                     class="form-input"
                   />
@@ -255,7 +255,7 @@
                   <label for="carbs">Carbs</label>
                   <input
                     type="number"
-                    id="carbs"
+                    id="meal-carbs"
                     placeholder="200g"
                     class="form-input"
                   />
@@ -265,14 +265,14 @@
                   <label for="fats">Fats</label>
                   <input
                     type="number"
-                    id="fats"
+                    id="meal-fats"
                     placeholder="100g"
                     class="form-input"
                   />
                 </div>
               </div>
               <div class="flex justify-end mr-2 mb-2 md:mr-0 md:justify-center">
-                <input class="bg-yellow-300 p-2 rounded-lg text-base" type="submit" value="Submit" class="submit-btn" />
+                <input class="bg-yellow-300 p-2 rounded-lg text-base cursor-pointer" type="submit" value="Submit" class="submit-btn" />
               </div>
             </form>
         </div>

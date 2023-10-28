@@ -77,7 +77,22 @@ class MacroTracker {
     this._totalProtein += meal.protein;
     this._totalCarbs += meal.carbs;
     this._totalFats += meal.fats;  
+    this._displayNewMeal(meal);
     this._render();
+  }
+
+  removeMeal(id) {
+    const index = this._meals.findIndex((meal) => meal.id === id);
+
+    if (index !== -1) {
+      const meal = this._meals[index];
+      this._totalCalories -= meal.calories;
+      this._totalProtein -= meal.protein;
+      this._totalCarbs -= meal.carbs;
+      this._totalFats -= meal.fats;  
+      this._meals.splice(index, 1);
+      this._render();
+    }
   }
 
   // Private Methods // 
@@ -250,6 +265,35 @@ class MacroTracker {
 
   }
 
+  _displayNewMeal(meal) {
+    const mealsEl = document.getElementById('meal-items');
+    const mealEl = document.createElement('div');
+    
+    mealEl.classList.add('meal-card');
+    mealEl.setAttribute('data-id', meal.id);
+    mealEl.innerHTML = `
+    <div class="meal-body"> 
+    <div class="meal-heading">
+      <p class="meal-text">${meal.name}</p>
+      <button><i class="fa-solid fa-x"></i></button>
+    </div>
+    <div>
+      <p class="meal-cals">${meal.calories} cals</p>
+    </div>
+    <div>
+      <ul class="meal-nutrition">
+        <li class="meal-macro">${meal.protein}g protein</li>
+        <li class="meal-macro meal-carbs">${meal.carbs}g carbs</li>
+        <li class="meal-macro">${meal.fats}g fats</li>
+      </ul>
+    </div>
+  </div>
+    `;
+
+    mealsEl.appendChild(mealEl);
+
+  }
+
     _render() {
       this._displayCaloriesConsumed();
       this._displayProteinConsumed();
@@ -279,10 +323,56 @@ class Meal {
   }
 }
 
-const tracker = new MacroTracker();
+// App 
+class App {
+  constructor() {
+    this._tracker = new MacroTracker();
 
-const breakfast = new Meal('Breakfast', 3000, 201, 181, 181);
-tracker.addMeal(breakfast);
+    document.getElementById('meal-form').addEventListener('submit', this._newMeal.bind(this));
 
-console.log(tracker._meals);
-console.log(tracker._totalCalories);
+    document.getElementById('meal-items').addEventListener('click', this._removeItem.bind(this, 'meal'));
+
+  }
+
+  _newMeal(e) {
+    e.preventDefault();
+
+    const name = document.getElementById('meal-name');
+    const calories = document.getElementById('meal-calories');
+    const protein = document.getElementById('meal-protein');
+    const carbs = document.getElementById('meal-carbs');
+    const fats = document.getElementById('meal-fats');
+
+    // Validate inputs
+    if (name.value === '' || calories.value === '' || protein.value === '' || carbs.value === '' || fats.value === '') {
+      alert('Please enter a value');
+      return;
+    }
+
+    const meal = new Meal(name.value, +calories.value, +protein.value, +carbs.value, +fats.value);
+
+    this._tracker.addMeal(meal);
+
+    name.value = '';
+    calories.value = '';
+    protein.value = '';
+    carbs.value = '';
+    fats.value = '';
+  }
+
+  _removeItem(type, e) {
+    if(e.target.classList.contains('delete') || e.target.classList.contains('fa-x')) {
+      if(confirm('Are you sure'));
+        const id = e.target.closest('.meal-card').getAttribute('data-id');
+        
+        if(type === 'meal') {
+          this._tracker.removeMeal(id);
+        }
+
+        e.target.closest('.meal-card').remove();
+    }
+  }
+
+}
+
+const app = new App();

@@ -52,8 +52,37 @@
 }
 
 /* List of meals */
+
+.meal-card {
+  @apply w-full md:w-48;
+}
+
+.meal-body {
+  @apply bg-blue-600 text-white rounded-lg p-4 my-4;
+}
+
+.meal-heading {
+  @apply flex justify-between;
+}
+
+.meal-text {
+  @apply pr-6 font-semibold md:text-xl;
+}
+
+.meal-cals {
+  @apply pb-2 font-light md:text-lg;
+}
+
+.meal-nutrition {
+  @apply flex text-xs font-light justify-between md:justify-normal;
+}
+
 .meal-macro {
-    @apply md:text-base;
+  @apply md:text-base;
+}
+
+.meal-carbs {
+  @apply md:px-6;
 }
 
 /* Remaining */
