@@ -13,9 +13,8 @@
   <body>
 
     <div class="wrapper">
-
       <header>
-        <h1 class="text-3xl font-bold lowercase text-center pt-16 pb-6"><i class="fa-solid fa-weight-scale pr-2"></i>Cal</span>macro</h1>
+        <h1 class="text-3xl font-bold lowercase text-center pt-16 pb-10"><i class="fa-solid fa-weight-scale pr-2" style="color:#2563eb;" ></i>Calmacro</h1>
         <div class="flex justify-center">
           <button class="btn" id="open-limit">Set limits</button>
           <button class="btn" id="reset">Reset meals</button>
@@ -24,7 +23,7 @@
 
       <!-- Stats: Limit -->
       <section class="my-10">      
-        <div class="bg-yellow-300 rounded-xl p-6 text-center">
+        <div class="bg-yellow-300 rounded-xl p-2 md:p-6 text-center">
           <!-- Calories Limit -->
           <div class="w-full">
             <div id="calories-limit" class="text-2xl"></div>
@@ -79,7 +78,7 @@
         <h3 class="font-medium pb-2 md:text-lg">Remaining</h3>   
         <div class="bg-yellow-300 rounded-xl p-4 text-center">
           <!-- Calories Remaining -->
-          <div class="flex pt-2 lg:justify-center">
+          <div class="flex flex-wrap justify-between pt-2 lg:justify-center">
             <div class="remaining-card">
               <div id="calories-remaining" class="remaining-value">2000</div>
               <p class="remaining-text">Calories</p>
@@ -117,15 +116,15 @@
 
       <!-- Show list of meals-->
       <section class="my-10">
-        <div class="flex flex-row justify-between">
+        <div class="flex flex-row justify-between pb-4">
           <h3 class="font-medium text-lg md:text-2xl">Meals</h3>
-          <button id="open-meal" class="bg-yellow-300 p-2 text-xs rounded-lg md:text-sm">Add meal <i class="fa-solid fa-plus"></i></button>
+          <button id="open-meal" class="bg-yellow-300 hover:bg-blue-600 hover:text-white transition ease-in p-2 text-sm rounded-lg font-medium md:text-base">Add meal <i class="fa-solid fa-plus"></i></button>
         </div>
         <div id="meal-items" class="flex flex-wrap justify-between">
         </div>
       </section>
 
-      <footer>
+      <footer class="py-6">
         <p class="text-center text-xs md:text-base">&copy; Ivan Somera 2023</p>
       </footer>
 
@@ -140,9 +139,9 @@
           </div>
             <!-- Modal Macros -->  
             <form id="limit-form" class="modal-form">
-              <div class="flex md:justify-center">
+              <div class="flex sm:justify-center">
                 <!-- Calories -->  
-                <div>
+                <div class="limit-layout">
                   <label for="calories" class="limit-label">Calories</label>
                   <input
                     type="text"
@@ -152,7 +151,7 @@
                   />
                 </div>
                 <!-- Protein -->  
-                <div>
+                <div class="limit-layout">
                   <label for="protein">Protein</label>
                   <input
                     type="number"
@@ -163,8 +162,8 @@
                 </div>
               </div>
               <!-- Carbs --> 
-              <div class="flex md:justify-center">
-                <div>
+              <div class="flex sm:justify-center">
+                <div class="limit-layout">
                   <label for="carbs">Carbs</label>
                   <input
                     type="number"
@@ -174,7 +173,7 @@
                   />
                 </div>
                 <!-- Fats -->  
-                <div>
+                <div class="limit-layout">
                   <label for="fats">Fats</label>
                   <input
                     type="number"
@@ -184,7 +183,7 @@
                   />
                 </div>
               </div>
-              <div class="flex justify-end mr-2 mb-2 md:mr-0 md:justify-center">
+              <div class="flex m-4 justify-center">
                 <input class="bg-yellow-300 p-2 rounded-lg text-base" type="submit" value="Submit" class="submit-btn" />
               </div>
             </form>
@@ -201,9 +200,9 @@
           </div>
             <!-- Modal Macros -->  
             <form id="meal-form" class="modal-form">
-              <div class="flex md:justify-center">
+              <div class="flex justify-center">
                 <!-- Calories -->  
-                <div>
+                <div class="meal-layout">
                   <label for="calories" class="limit-label">Name</label>
                   <input
                     type="text"
@@ -213,7 +212,7 @@
                   />
                 </div>
                 <!-- Calories -->  
-                <div>
+                <div class="meal-layout">
                   <label for="calories" class="limit-label">Calories</label>
                   <input
                     type="number"
@@ -222,8 +221,11 @@
                     class="form-input"
                   />
                 </div>
+              </div>
+             
+              <div class="flex justify-center">
                 <!-- Protein -->  
-                <div>
+                <div class="meal-layout">
                   <label for="protein">Protein</label>
                   <input
                     type="number"
@@ -232,10 +234,8 @@
                     class="form-input"
                   />
                 </div>
-              </div>
-              <!-- Carbs --> 
-              <div class="flex md:justify-center">
-                <div>
+                <!-- Carbs --> 
+                <div class="meal-layout">
                   <label for="carbs">Carbs</label>
                   <input
                     type="number"
@@ -245,7 +245,7 @@
                   />
                 </div>
                 <!-- Fats -->  
-                <div>
+                <div class="meal-layout">
                   <label for="fats">Fats</label>
                   <input
                     type="number"
@@ -255,7 +255,7 @@
                   />
                 </div>
               </div>
-              <div class="flex justify-end mr-2 mb-2 md:mr-0 md:justify-center">
+              <div class="flex m-4 justify-center">
                 <input class="bg-yellow-300 p-2 rounded-lg text-base cursor-pointer" type="submit" value="Submit" class="submit-btn" />
               </div>
             </form>

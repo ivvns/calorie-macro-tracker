@@ -5,15 +5,17 @@
 
 .wrapper {
     margin: 0 auto;
-    @apply w-8/12 lg:max-w-screen-xl;
+    @apply w-4/5 lg:max-w-screen-md;
 }
+
+/* Progress Bars */
 
 .text-limit {
   @apply bg-black rounded-xl text-white ;
 }
 
 .bar-limit {
-  @apply bg-red-700;
+  @apply bg-red-500;
 }
 
 /* Button */
@@ -38,9 +40,9 @@
   @apply font-semibold text-sm;
 }
 
-/* consumed */
+/* Consumed */
 .consumed-cards {
-    @apply bg-black text-white p-2 w-2/4 text-xs rounded-lg text-center;
+    @apply bg-blue-600 text-white p-2 w-2/4 text-xs rounded-lg text-center;
 }
 
 .consumed-number {
@@ -58,7 +60,7 @@
 }
 
 .meal-body {
-  @apply bg-blue-600 text-white rounded-lg p-4 my-4;
+  @apply bg-blue-600 text-white rounded-lg p-4 my-2 md:my-4;
 }
 
 .meal-heading {
@@ -88,7 +90,7 @@
 /* Remaining */
 
 .remaining-card {
-  @apply w-3/12 lg:w-2/12 xl:w-1/12 mr-2 p-2;
+  @apply w-48 py-2 md:w-3/12 md:mx-2 md:p-2 lg:w-1/5 ;
 }
 
 .remaining-value {
@@ -120,10 +122,6 @@
     
   }
 
-  .modal-form div {
-    @apply p-2;
-  }
-
   .modal-form input, input::placeholder {
     @apply text-xs;
     @apply md:text-base;
@@ -143,6 +141,14 @@
     @apply absolute text-2xl;
     top: 12px;
     right: 16px;
+  }
+
+  .modal-form .limit-layout {
+    @apply p-2 md:px-8;
+  }
+
+  .modal-form .meal-layout {
+    @apply p-2 md:px-8;
   }
 
 
