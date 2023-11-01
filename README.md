@@ -19,4 +19,4 @@ clone the repo or download zip
 
 run `npm install` to download the dependencies
 
-run `npm run build` to build dist folder
+run `npm run dev` to build dist folder and run local server
