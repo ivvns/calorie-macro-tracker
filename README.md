@@ -1,6 +1,6 @@
 # Calorie and Macro Tracker Web App
 
-Vanilla JS project using Webpack and TailwindCSS. 
+Vanilla JS OOP project using Webpack and TailwindCSS. 
 
 App utilizes CRUD functionality:
 
