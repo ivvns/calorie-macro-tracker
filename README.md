@@ -13,7 +13,7 @@ App utilizes CRUD functionality:
 -Delete meals 
 
 
-To run the app:
+## To run the app:
 
 clone the repo or download zip
 
